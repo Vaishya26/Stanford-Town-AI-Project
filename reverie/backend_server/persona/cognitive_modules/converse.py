@@ -240,7 +240,7 @@ def load_history_via_whisper(personas, whispers):
   for count, row in enumerate(whispers): 
     persona = personas[row[0]]
     whisper = row[1]
-
+    print(personas)
     thought = generate_inner_thought(persona, whisper)
 
     created = persona.scratch.curr_time

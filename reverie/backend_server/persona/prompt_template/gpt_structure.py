@@ -13,7 +13,7 @@ from utils import *
 
 openai.api_key = openai_api_key
 
-def temp_sleep(seconds=0.1):
+def temp_sleep(seconds=10):
   time.sleep(seconds)
 
 def ChatGPT_single_request(prompt): 
@@ -277,8 +277,16 @@ def get_embedding(text, model="text-embedding-ada-002"):
   text = text.replace("\n", " ")
   if not text: 
     text = "this is blank"
-  return openai.Embedding.create(
-          input=[text], model=model)['data'][0]['embedding']
+    try:
+        result = openai.Embedding.create(input=[text], model=model)
+        embedding = result['data'][0]['embedding']
+        return embedding
+    except openai.error.OpenAIError as e:
+        # Handle OpenAI errors here
+        print("OpenAI Error:", e)
+        return None  # Or raise the error, log it, or perform other error handling actions
+  # return openai.Embedding.create(
+  #         input=[text], model=model)['data'][0]['embedding']
 
 
 if __name__ == '__main__':
@@ -287,7 +295,7 @@ if __name__ == '__main__':
                    "frequency_penalty": 0, "presence_penalty": 0, 
                    "stop": ['"']}
   curr_input = ["driving to a friend's house"]
-  prompt_lib_file = "prompt_template/test_prompt_July5.txt"
+  prompt_lib_file = "prompt_template/v1/test_prompt_July5.txt"
   prompt = generate_prompt(curr_input, prompt_lib_file)
 
   def __func_validate(gpt_response): 
