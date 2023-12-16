@@ -1,6 +1,7 @@
 
 
-# Generative Agents: Interactive Simulacra of Human Behavior 
+# Generative Agents: Interactive Simulacra of Human Behavior
+## Reproduced Version for CS-5660
 
 <p align="center" width="100%">
 <img src="cover.png" alt="Smallville" style="width: 80%; min-width: 300px; display: block; margin: auto;">
