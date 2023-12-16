@@ -12,6 +12,11 @@ This repository accompanies our research paper titled "[Generative Agents: Inter
 ## <img src="https://joonsungpark.s3.amazonaws.com:443/static/assets/characters/profile/Isabella_Rodriguez.png" alt="Generative Isabella">   Setting Up the Environment 
 To set up your environment, you will need to generate a `utils.py` file that contains your OpenAI API key and download the necessary packages.
 
+
+### Changes Made
+In the `reverie/backend_server/persona/prompt_template/gpt_structure.py` file inside `get_embeddings()` add try -- catch block and separated result to debug the output for each request
+
+
 ### Step 1. Generate Utils File
 In the `reverie/backend_server` folder (where `reverie.py` is located), create a new file titled `utils.py` and copy and paste the content below into the file:
 ```
